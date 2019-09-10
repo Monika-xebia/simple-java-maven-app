@@ -3,17 +3,17 @@ pipeline {
 	stages {
 		stage('build') {
 			step {
-				mvn clean package
+				sh 'mvn clean package'
 			}
 
 		}
 		stage('test'){
 			step {
-				mvn test 
+				sh 'mvn test' 
 			}
 			post {
 				always{
-					
+
 					junit 'target/surefire-reports/*.xml'
 				}
 			}
